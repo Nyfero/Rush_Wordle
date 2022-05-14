@@ -3,8 +3,8 @@
 int	main(void)
 {
 	t_grid	grid;
-	t_word  word_index[26];
-	char **word_table;
+	t_word	word_index[26];
+	char	**word_table;
 	int		word_count;
 
 	if ((word_count = parse_word_file(word_index)) == -1)
@@ -23,5 +23,6 @@ int	main(void)
 	displayGameStart();
 	grid = initGridGame("times");
 	game(grid);
+	ft_free_ls(word_table);
 	return (0);
 }

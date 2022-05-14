@@ -16,7 +16,6 @@
 # include <time.h>
 # include <sys/random.h>
 
-
 typedef struct s_word
 {
 	char	letter;
@@ -44,6 +43,8 @@ int		ft_str_isalpha(char *str);
 void	clean(t_grid grid/*, t_word index*/);
 void	ft_incr_word_index(t_word *word_index, char first_letter);
 void    ft_print_word_table(char **word_table);
+int		check_line(char *line);
+
 //	game.c
 int		game(t_grid disp/*, char ** dict, t_word index*/);
 int		check_input(char *input/*, char **dict, t_word index*/);
