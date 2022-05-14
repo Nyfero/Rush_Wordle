@@ -52,7 +52,7 @@ all: $(NAME)
 
 $(NAME): $(LIBFT) $(OBJS_PATH) $(OBJS) $(INC)
 	@ echo "$(BLUE)\n         ***Make $(NAME) ***\n$(END)"
-	$(HIDE) $(CC) $(CFLAGS) $(OBJS) -lreadline -o $(NAME) $(LIBFT)
+	$(HIDE) $(CC) $(CFLAGS) $(OBJS) -g3 -o $(NAME) $(LIBFT)
 	@ echo "$(GREEN)\n        ---$(NAME) created ---\n$(END)"
 	
 $(LIBFT): libft/Makefile

@@ -1,6 +1,6 @@
 #include "../inc/RushWordle.h"
 
-void displayGameStart(void)
+void	displayGameStart(void)
 {
 	printf(".------------------..------------------..------------------..------------------..------------------..------------------.\n");
 	printf("| .--------------. || .--------------. || .--------------. || .--------------. || .--------------. || .--------------. |\n");
@@ -19,43 +19,47 @@ void	displayGrid(t_grid grid)
 {
 	int		i;
 	int		j;
-	char	*tmp;
+	char	tmp[6];
 	
 	i = -1;
 	while (grid.tab[++i])
 	{
-		tmp = strdup(grid.word);
+		for (int k = 0; grid.word[k]; k++)
+			tmp[k] = grid.word[k];
+		tmp[5] = 0;
 		j = -1;
 		while (grid.tab[i][++j])
 		{
 			if (grid.tab[i][0] == '_')
 				printf(" %c ", grid.tab[i][j]);
 			else if (grid.tab[i][j] == tmp[j])
+			{
+				tmp[j] = '@';
 				printf(" \e[92m%c\e[39m ", grid.tab[i][j]);
+			}
 			else
 			{
-				if (letterInWord(grid.tab[i][j], &tmp))
+				if (letterInWord(grid.tab[i][j], tmp))
 					printf(" \e[93m%c\e[39m ", grid.tab[i][j]);
 				else
 					printf(" \e[90m%c\e[39m ", grid.tab[i][j]);
 			}
 		}
 		printf("\n");
-		free(tmp);
 	}
 	printf("\n");
 }
 
-int	letterInWord(char c, char **tmp)
+int		letterInWord(char c, char *tmp)
 {
 	int	i;
 	
 	i = -1;
-	while ((*tmp)[++i])
+	while (tmp[++i])
 	{
-		if (c == (*tmp)[i])
+		if (c == tmp[i])
 		{
-			(*tmp)[i] = '@';
+			tmp[i] = '@';
 			return (1);
 		}
 	}

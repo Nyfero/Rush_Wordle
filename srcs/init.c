@@ -34,6 +34,7 @@ t_grid	initGridGame(char *guess)
 void	init_word_index(t_word *word_index)
 {
 	char a_to_z = 'a';
+
 	for (int i = 0; i < 26; i++)
 	{
 		word_index[i].letter = a_to_z;
@@ -44,40 +45,40 @@ void	init_word_index(t_word *word_index)
 	}
 }
 
-void    ft_update_word_index(t_word *word_index)
+void	ft_update_word_index(t_word *word_index)
 {
 	word_index[0].start = 0;
-	word_index[0].end = word_index[0].end - 1;
 	for (int i = 1; i < 26; i++)
 	{
-		word_index[i].start = word_index[i - 1].end + 1;
-		word_index[i].end = word_index[i].start + word_index[i].end - 1;
+		word_index[i].start = word_index[i - 1].end;
+		word_index[i].end = word_index[i].start + word_index[i].end;
 	}
 }
 
-int     ft_fill_word_table(char **word_table, t_word *word_index)
+int		ft_fill_word_table(char **word_table, t_word *word_index)
 {
-    FILE *fd;
-    size_t len = 0;
-    char *line = NULL;
-    int ret;
-    if ((fd = fopen("words.txt", "r")) == NULL)
-        return (-1);
-    while ((ret = getline(&line, &len, fd)) != -1)
-    {
-        int letter_index = line[0] - 97;
-        int table_index = word_index[letter_index].start + word_index[letter_index].current;
-        word_index[letter_index].current += 1;
-        for  (int j = 0; j < 5; j++)
-            word_table[table_index][j] = line[j];
-        word_table[table_index][5] = '\0';
-    }
-    if ((ret == -1 && errno != 0) || fclose(fd) != 0)
-    {
-        free(line);
-        return (-1);
-    }
-    return 0;
+	FILE	*fd;
+	size_t	len = 0;
+	char	*line = NULL;
+	int		ret;
+	int		letter_index;
+	int		table_index;
+	
+	if ((fd = fopen(FILE_PATH, "r")) == NULL)
+		return (-1);
+	while ((ret = getline(&line, &len, fd)) != -1)
+	{
+		letter_index = line[0] - 97;
+		table_index = word_index[letter_index].start + word_index[letter_index].current;
+		word_index[letter_index].current += 1;
+		for  (int j = 0; j < 5; j++)
+			word_table[table_index][j] = line[j];
+		word_table[table_index][5] = '\0';
+	}
+	free(line);
+	if ((ret == -1 && errno != 0) || fclose(fd) != 0)
+		return (-1);
+	return (0);
 }
 
 char	**init_table(int word_count)
@@ -108,7 +109,7 @@ int		parse_word_file(t_word *word_index)
 	int		word_count = 0;
 	size_t	len = 0;
 	char	*line = NULL;
-	FILE	*fd = fopen("words.txt", "r");
+	FILE	*fd = fopen(FILE_PATH, "r");
 	int ret;
 
 	init_word_index(word_index);
