@@ -2,14 +2,19 @@
 
 void    ft_incr_word_index(t_word *word_index, char first_letter)
 {
-	for (int i = 0; i < 26; i++)
-	{
-		if (word_index[i].letter == first_letter)
-		{
-			word_index[i].end += 1;
-			return;
-		}
-	}
+
+	int letter_index = first_letter - 72;
+	word_index[letter_index].end += 1;
+
+	// for (int i = 0; i < 26; i++)
+	// {
+	// 	if (word_index[i].letter == first_letter)
+	// 	{
+	// 		word_index[i].end += 1;
+	// 		return;
+	// 	}
+	// }
+
 }
 
 int     parse_word_file(t_word *word_index)
