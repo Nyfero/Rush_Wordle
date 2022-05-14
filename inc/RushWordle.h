@@ -22,7 +22,7 @@ typedef struct s_word
 	char	letter;
 	int		start;
 	int		end;
-	int     current;
+	int		current;
 }	t_word;
 
 typedef struct s_grid
@@ -34,10 +34,14 @@ typedef struct s_grid
 //	init.c
 t_grid	initGridGame(char *guess);
 void	init_word_index(t_word *word_index);
+void    ft_update_word_index(t_word *word_index);
+char	**init_table(int word_count);
+int		parse_word_file(t_word *word_index);
 
 //	utils.c
 int		ft_str_isalpha(char *str);
 void	clean(t_grid grid/*, t_word index*/);
+void	ft_incr_word_index(t_word *word_index, char first_letter);
 
 //	game.c
 int		game(t_grid disp/*, char ** dict, t_word index*/);

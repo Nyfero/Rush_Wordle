@@ -20,3 +20,9 @@ void	clean(t_grid grid/*, t_word index*/)
 	free(grid.tab);
 	free(grid.word);
 }
+
+void    ft_incr_word_index(t_word *word_index, char first_letter)
+{
+	int letter_index = first_letter - 97;
+	word_index[letter_index].end += 1;
+}
