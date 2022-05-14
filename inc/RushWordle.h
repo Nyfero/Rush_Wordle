@@ -42,6 +42,7 @@ int		parse_word_file(t_word *word_index);
 int		ft_str_isalpha(char *str);
 void	clean(t_grid grid/*, t_word index*/);
 void	ft_incr_word_index(t_word *word_index, char first_letter);
+int		check_line(char *line);
 
 //	game.c
 int		game(t_grid disp/*, char ** dict, t_word index*/);
