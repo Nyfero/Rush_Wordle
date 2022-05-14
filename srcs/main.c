@@ -20,17 +20,15 @@ int	main(void)
 		ft_free_ls(word_table);
 		return (1);
 	}
-	ft_print_word_table(word_table);// a suppr
 	srand(time(NULL));
-	guess = strdup(word_table[(rand() % (word_count + 1))]);
-	printf("guess %s\n", guess);
+	guess = strdup(word_table[(rand() % word_count)]);
 	if (!guess)
 	{
 		ft_free_ls(word_table);
 		return (1);
 	}
 	displayGameStart();
-	grid = initGridGame(guess);
+	grid = initGridGame("aahed");
 	game(grid, word_table, word_index);
 	ft_free_ls(word_table);
 	free(guess);

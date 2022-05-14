@@ -33,7 +33,10 @@ void	displayGrid(t_grid grid)
 			if (grid.tab[i][0] == '_')
 				printf(" %c ", grid.tab[i][j]);
 			else if (grid.tab[i][j] == tmp[j])
+			{
+				tmp[j] = '@';
 				printf(" \e[92m%c\e[39m ", grid.tab[i][j]);
+			}
 			else
 			{
 				if (letterInWord(grid.tab[i][j], tmp))

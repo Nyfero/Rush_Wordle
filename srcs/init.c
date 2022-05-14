@@ -48,11 +48,10 @@ void	init_word_index(t_word *word_index)
 void	ft_update_word_index(t_word *word_index)
 {
 	word_index[0].start = 0;
-	word_index[0].end = word_index[0].end - 1;
 	for (int i = 1; i < 26; i++)
 	{
-		word_index[i].start = word_index[i - 1].end + 1;
-		word_index[i].end = word_index[i].start + word_index[i].end - 1;
+		word_index[i].start = word_index[i - 1].end;
+		word_index[i].end = word_index[i].start + word_index[i].end;
 	}
 }
 
@@ -65,7 +64,7 @@ int		ft_fill_word_table(char **word_table, t_word *word_index)
 	int		letter_index;
 	int		table_index;
 	
-	if ((fd = fopen("test.txt", "r")) == NULL)
+	if ((fd = fopen(FILE_PATH, "r")) == NULL)
 		return (-1);
 	while ((ret = getline(&line, &len, fd)) != -1)
 	{
@@ -110,7 +109,7 @@ int		parse_word_file(t_word *word_index)
 	int		word_count = 0;
 	size_t	len = 0;
 	char	*line = NULL;
-	FILE	*fd = fopen("test.txt", "r");
+	FILE	*fd = fopen(FILE_PATH, "r");
 	int ret;
 
 	init_word_index(word_index);
