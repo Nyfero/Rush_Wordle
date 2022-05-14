@@ -91,19 +91,11 @@ int	main(void)
     ft_update_word_index(word_index);
 	word_table = (char **)malloc(sizeof(char*) * (word_count + 1));
 	if (word_table == NULL)
-	    return (-1);
-    word_table[word_count] = NULL;
-    for (int i = 0; i < word_count; i++)
-    {
-        word_table[i] = (char*)malloc(sizeof(char) * 6);
-        if (word_table[i] == NULL)
-        {
-            for (int j = 0; j < i; j++)
-                free(word_table[j];
-            free(word_table);
-        }
-        word_table[5] = '\0';
-    }
+	{
+	printf("Wordtable = NULL");
+	return (-1);
+	}
+	*/
 	displayGameStart();
 	grid = initGridGame("times");
 	game(grid);
