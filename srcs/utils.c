@@ -34,6 +34,7 @@ void    ft_print_word_table(char **word_table)
     {
         printf("[%d] -- %s\n", i, word_table[i]);
         i++;
+    }
 }
   
 int		check_line(char *line)
