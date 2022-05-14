@@ -1,6 +1,6 @@
 #include "../inc/RushWordle.h"
 
-int game(t_grid grid/*, char ** dict, t_word index*/)
+int game(t_grid grid, char ** dict, t_word *index)
 {
 	char	*input;
 	int		nb_try;
@@ -11,7 +11,7 @@ int game(t_grid grid/*, char ** dict, t_word index*/)
 	{
 		write(1, "input: ", 7);
 		input = get_next_line(0);
-		if (check_input(input/*, dict, index*/))
+		if (check_input(input, dict, index))
 			;
 		else
 		{
@@ -33,7 +33,7 @@ int game(t_grid grid/*, char ** dict, t_word index*/)
 	return (0);
 }
 
-int	check_input(char *input/*, char **dict, t_word index*/)
+int	check_input(char *input, char **dict, t_word *index)
 {
 	int	i;
 
@@ -56,11 +56,11 @@ int	check_input(char *input/*, char **dict, t_word index*/)
 			return (1);
 		}
 	}
-	/*if (check_existing_world(input, dict, index))	//existing word
+	if (check_existing_world(input, dict, index))	//existing word
 	{
 		printf("\e[91mInvalid Word !\nThis word is not in the given words dictionnary\e[39m\n");
 		return (1);	
-	}*/
+	}
 	return (0);
 }
 
@@ -80,4 +80,24 @@ void	putInGrid(char *input, t_grid grid)
 			return ;
 		}
 	}
+}
+
+int		check_existing_world(char *input, char **dict, t_word *index)
+{
+	int	i;
+	int	j;
+	char	tmp[6];
+
+	for(int k = 0; input[k]; k++)
+		tmp[k] = ft_tolower(input[k]);
+	tmp[5] = 0;
+	i = tmp[0] - 97;
+	j = index[i].start;
+	while (j < index[i].end)
+	{
+		if (!strcmp(tmp, dict[j]))
+			return (0);
+		j++;
+	}
+	return (1);
 }

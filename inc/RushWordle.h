@@ -33,8 +33,8 @@ typedef struct s_grid
 //	init.c
 t_grid	initGridGame(char *guess);
 void	init_word_index(t_word *word_index);
-void    ft_update_word_index(t_word *word_index);
-int     ft_fill_word_table(char **word_table, t_word *word_index);
+void	ft_update_word_index(t_word *word_index);
+int		ft_fill_word_table(char **word_table, t_word *word_index);
 char	**init_table(int word_count);
 int		parse_word_file(t_word *word_index);
 
@@ -42,20 +42,18 @@ int		parse_word_file(t_word *word_index);
 int		ft_str_isalpha(char *str);
 void	clean(t_grid grid/*, t_word index*/);
 void	ft_incr_word_index(t_word *word_index, char first_letter);
-void    ft_print_word_table(char **word_table);
-int		check_line(char *line);
-
-void    ft_print_word_table(char **word_table);
+void	ft_print_word_table(char **word_table);
 int		check_line(char *line);
 
 //	game.c
-int		game(t_grid disp/*, char ** dict, t_word index*/);
-int		check_input(char *input/*, char **dict, t_word index*/);
+int		game(t_grid disp, char ** dict, t_word *index);
+int		check_input(char *input, char **dict, t_word *index);
 void	putInGrid(char *input, t_grid grid);
+int		check_existing_world(char *input, char **dict, t_word *index);
 
 //	display.c
 void	displayGameStart(void);
 void	displayGrid(t_grid grid);
-int		letterInWord(char c, char **tmp);
+int		letterInWord(char c, char *tmp);
 
 #endif

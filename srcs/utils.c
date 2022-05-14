@@ -13,7 +13,7 @@ int		ft_str_isalpha(char *str)
 void	clean(t_grid grid/*, t_word index*/)
 {
 	int i;
-	
+
 	i = -1;
 	while (grid.tab[++i])
 		free(grid.tab[i]);
@@ -23,20 +23,23 @@ void	clean(t_grid grid/*, t_word index*/)
 
 void	ft_incr_word_index(t_word *word_index, char first_letter)
 {
-	int	letter_index = first_letter - 97;
+	int	letter_index;
+
+	letter_index = first_letter - 97;
 	word_index[letter_index].end += 1;
 }
 
-void    ft_print_word_table(char **word_table)
+void	ft_print_word_table(char **word_table)
 {
-    int i = 0;
-    while (word_table[i])
-    {
-        printf("[%d] -- %s\n", i, word_table[i]);
-        i++;
-    }
+	int i = 0;
+
+	while (word_table[i])
+	{
+		printf("[%d] -- %s\n", i, word_table[i]);
+		i++;
+	}
 }
-  
+
 int		check_line(char *line)
 {
 	if (strlen(line) == 6)
