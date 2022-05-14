@@ -7,7 +7,7 @@ int	main(void)
 	char	**word_table;
 	int		word_count;
 
-	if ((word_count = parse_word_file(word_index) == -1))
+	if ((word_count = parse_word_file(word_index)) == -1)
 	{
 		printf("File parsing error\n");
 		return -1;

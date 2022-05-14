@@ -16,7 +16,6 @@
 # include <time.h>
 # include <sys/random.h>
 
-
 typedef struct s_word
 {
 	char	letter;
