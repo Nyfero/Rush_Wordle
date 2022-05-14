@@ -20,23 +20,33 @@ void	displayGrid(t_grid grid)
 	int		i;
 	int		j;
 	char	tmp[6];
+	int		color[5];
 	
 	i = -1;
 	while (grid.tab[++i])
 	{
 		for (int k = 0; grid.word[k]; k++)
+		{
+			color[k] = 0;
 			tmp[k] = grid.word[k];
+		}
 		tmp[5] = 0;
+		j = -1;
+		while (grid.tab[i][++j])
+		{
+			if (grid.tab[i][j] == tmp[j])
+			{
+				tmp[j] = '@';
+				color[j] = 1;
+			}
+		}
 		j = -1;
 		while (grid.tab[i][++j])
 		{
 			if (grid.tab[i][0] == '_')
 				printf(" %c ", grid.tab[i][j]);
-			else if (grid.tab[i][j] == tmp[j])
-			{
-				tmp[j] = '@';
+			else if (color[j] == 1)
 				printf(" \e[92m%c\e[39m ", grid.tab[i][j]);
-			}
 			else
 			{
 				if (letterInWord(grid.tab[i][j], tmp))
