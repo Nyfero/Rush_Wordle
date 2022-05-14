@@ -68,11 +68,11 @@ int		ft_fill_word_table(char **word_table, t_word *word_index)
 		return (-1);
 	while ((ret = getline(&line, &len, fd)) != -1)
 	{
-		letter_index = line[0] - 97;
+		letter_index = tolower(line[0]) - 97;
 		table_index = word_index[letter_index].start + word_index[letter_index].current;
 		word_index[letter_index].current += 1;
 		for  (int j = 0; j < 5; j++)
-			word_table[table_index][j] = line[j];
+			word_table[table_index][j] = tolower(line[j]);
 		word_table[table_index][5] = '\0';
 	}
 	free(line);
@@ -114,10 +114,7 @@ int		parse_word_file(t_word *word_index)
 
 	init_word_index(word_index);
 	if (fd == NULL)
-	{
-		printf("Error : parse_file : open failed\n");
 		return (-1);
-	}
 	while ((ret = getline(&line, &len, fd)) != -1)
 	{
 		if (check_line(line))
@@ -127,14 +124,8 @@ int		parse_word_file(t_word *word_index)
 	}
 	free(line);
 	if (ret == -1 && errno != 0)
-	{
-		printf("Getline : Errno : %s\n", strerror(errno));
 		return (-1);
-	}
 	if (fclose(fd) != 0)
-	{
-		printf("Error : parse_file : close failed\n");
 		return (-1);
-	}
 	return (word_count);
 }

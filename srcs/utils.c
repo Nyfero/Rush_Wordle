@@ -25,7 +25,7 @@ void	ft_incr_word_index(t_word *word_index, char first_letter)
 {
 	int	letter_index;
 
-	letter_index = first_letter - 97;
+	letter_index = tolower(first_letter) - 97;
 	word_index[letter_index].end += 1;
 }
 

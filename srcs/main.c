@@ -9,10 +9,7 @@ int	main(void)
 	char	*guess;
 
 	if ((word_count = parse_word_file(word_index)) == -1)
-	{
-		printf("File parsing error\n");
 		return (1);
-	}
 	ft_update_word_index(word_index);
 	word_table = init_table(word_count);
 	if (ft_fill_word_table(word_table, word_index) == -1)
