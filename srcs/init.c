@@ -6,11 +6,11 @@ t_grid	initGridGame(char *guess)
 	int		i;
 	int		j;
 	
-	init.tab = (char **)malloc(sizeof(char *) * 6);
+	init.tab = (char **)malloc(sizeof(char *) * 7);
 	if (!init.tab)
 		exit(1);
 	i = 0;
-	while (i < 5)
+	while (i < 6)
 	{
 		init.tab[i] = (char *)malloc(sizeof(char) * 6);
 		if (!init.tab[i])

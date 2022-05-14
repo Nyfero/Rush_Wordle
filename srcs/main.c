@@ -27,8 +27,9 @@ int	main(void)
 		ft_free_ls(word_table);
 		return (1);
 	}
+	ft_print_word_table(word_table);
 	displayGameStart();
-	grid = initGridGame("aahed");
+	grid = initGridGame(guess);
 	game(grid, word_table, word_index);
 	ft_free_ls(word_table);
 	free(guess);
