@@ -81,14 +81,3 @@ void	putInGrid(char *input, t_grid grid)
 		}
 	}
 }
-
-void	clean(t_grid grid/*, t_word index*/)
-{
-	int i;
-	
-	i = -1;
-	while (grid.tab[++i])
-		free(grid.tab[i]);
-	free(grid.tab);
-	free(grid.word);
-}

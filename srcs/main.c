@@ -2,19 +2,8 @@
 
 void    ft_incr_word_index(t_word *word_index, char first_letter)
 {
-
-	int letter_index = first_letter - 72;
+	int letter_index = first_letter - 97;
 	word_index[letter_index].end += 1;
-
-	// for (int i = 0; i < 26; i++)
-	// {
-	// 	if (word_index[i].letter == first_letter)
-	// 	{
-	// 		word_index[i].end += 1;
-	// 		return;
-	// 	}
-	// }
-
 }
 
 int     parse_word_file(t_word *word_index)
@@ -102,7 +91,7 @@ int     parse_word_file(t_word *word_index)
 	//Close file
 	//Set up les range start et end dans wordindex
 	//malloc le double tableau
-	return 0;
+	return (word_count);
 
 }
 
@@ -126,7 +115,11 @@ int	main(void)
 	return (-1);
 	}
 	*/
+	printf("wc: %d\n", word_count);
+	srand(time(NULL));
+	int	tmp = (rand() % (word_count + 1));
 	displayGameStart();
+	printf("tmp: %d\n", tmp);
 	grid = initGridGame("times");
 	game(grid);
 	return (0);

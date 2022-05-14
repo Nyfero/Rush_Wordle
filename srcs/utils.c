@@ -9,3 +9,14 @@ int ft_str_isalpha(char *str)
 	}
 	return 0;
 }
+
+void	clean(t_grid grid/*, t_word index*/)
+{
+	int i;
+	
+	i = -1;
+	while (grid.tab[++i])
+		free(grid.tab[i]);
+	free(grid.tab);
+	free(grid.word);
+}

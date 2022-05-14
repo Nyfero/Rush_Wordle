@@ -13,6 +13,8 @@
 # include <string.h>
 # include <ctype.h>
 # include <errno.h>
+# include <time.h>
+# include <sys/random.h>
 
 
 typedef struct s_word
@@ -20,7 +22,7 @@ typedef struct s_word
 	char	letter;
 	int		start;
 	int		end;
-    int     current;
+	int     current;
 }	t_word;
 
 typedef struct s_grid
@@ -35,12 +37,12 @@ void	init_word_index(t_word *word_index);
 
 //	utils.c
 int		ft_str_isalpha(char *str);
+void	clean(t_grid grid/*, t_word index*/);
 
 //	game.c
 int		game(t_grid disp/*, char ** dict, t_word index*/);
 int		check_input(char *input/*, char **dict, t_word index*/);
 void	putInGrid(char *input, t_grid grid);
-void	clean(t_grid grid/*, t_word index*/);
 
 //	display.c
 void	displayGameStart(void);
