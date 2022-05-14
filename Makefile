@@ -26,10 +26,10 @@ INC = $(addprefix $(INC_PATH)/, RushWordle.h)
 SRCS_PATH = srcs
 
 #    Files
-FILES = exec.c
+FILES = main.c exec.c title.c
 
 #    Compilation
-NAME = RushWordle
+NAME = wordle
 
 CC = clang
 
@@ -48,7 +48,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS_PATH) $(OBJS) $(INC)
 	@ echo "$(BLUE)\n         ***Make $(NAME) ***\n$(END)"
-	$(HIDE) $(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+	$(HIDE) $(CC) $(CFLAGS) $(OBJS) -lreadline -o $(NAME)
 	@ echo "$(GREEN)\n        ---$(NAME) created ---\n$(END)"
 
 $(OBJS_PATH):
