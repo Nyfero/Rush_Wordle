@@ -14,6 +14,12 @@ int	main(void)
 	}
 	ft_update_word_index(word_index);
 	word_table = init_table(word_count);
+    if (ft_fill_word_table(word_table, word_index) == -1)
+    {
+        ft_free_ls(word_table);
+        return -1;
+    }
+    ft_print_word_table(word_table);
 	displayGameStart();
 	grid = initGridGame("times");
 	game(grid);
