@@ -6,12 +6,19 @@
 # include <string.h>
 # include <stdlib.h>
 # include <readline/readline.h>
+# include <sys/types.h>
+# include <sys/stat.h>
+# include <fcntl.h>
+# include <string.h>
+# include <ctype.h>
+# include <errno.h>
 
 typedef struct s_word
 {
 	char	letter;
 	int		start;
 	int		end;
+    int     current;
 }	t_word;
 
 typedef struct s_grid
