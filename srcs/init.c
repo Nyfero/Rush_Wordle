@@ -30,3 +30,16 @@ t_grid	initGridGame(char *guess)
 		exit(1);
 	return (init);
 }
+
+void	init_word_index(t_word *word_index)
+{
+	char a_to_z = 'a';
+	for (int i = 0; i < 26; i++)
+	{
+		word_index[i].letter = a_to_z;
+		word_index[i].start = 0;
+		word_index[i].end = 0;
+		word_index[i].current = 0;
+		a_to_z += 1;
+	}
+}

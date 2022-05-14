@@ -9,7 +9,8 @@ int game(t_grid grid/*, char ** dict, t_word index*/)
 	displayGrid(grid);
 	while (nb_try < 5)
 	{
-		input = readline("input: ");
+		write(1, "input: ", 7);
+		input = get_next_line(0);
 		if (check_input(input/*, dict, index*/))
 			;
 		else
@@ -17,8 +18,18 @@ int game(t_grid grid/*, char ** dict, t_word index*/)
 			putInGrid(input, grid);
 			displayGrid(grid);
 			nb_try++;
+			if (!strcmp(input, grid.word))
+			{
+				printf("\e[92mCongratulations you found the word %s in %d guesses !\n\e[39m", grid.word, nb_try);
+				free(input);
+				clean(grid/*, index*/);
+				return (0);
+			}
 		}
+		free(input);
 	}
+	printf("\e[91mYou loose !\nThe word was '%s'\n\e[39m", grid.word);
+	clean(grid/*, index*/);
 	return (0);
 }
 
@@ -69,4 +80,15 @@ void	putInGrid(char *input, t_grid grid)
 			return ;
 		}
 	}
+}
+
+void	clean(t_grid grid/*, t_word index*/)
+{
+	int i;
+	
+	i = -1;
+	while (grid.tab[++i])
+		free(grid.tab[i]);
+	free(grid.tab);
+	free(grid.word);
 }
