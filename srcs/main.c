@@ -15,7 +15,6 @@ void    init_word_index(t_word *word_index)
 
 int ft_str_isalpha(char *str)
 {
-    
     for (int i = 0; i < 5; i++)
     {
         if (isalpha(str[i]) == 0)
@@ -36,12 +35,10 @@ void    ft_incr_word_index(t_word *word_index, char first_letter)
     {
         if (word_index[i].letter == first_letter)
         {
-           // printf("Word index %c found\n", first_letter);
             word_index[i].end += 1;
             return;
         }
     }
-    //printf("Something wrong in incr_word_index ...");
 }
 
 int     parse_word_file(t_word *word_index)
@@ -57,19 +54,13 @@ int     parse_word_file(t_word *word_index)
         printf("Error : parse_file : open failed\n");
         return -1;
     }
-     //Lire chaque ligne
-       //incr word_index a element count a l'index de la lettre
     int ret;
     while ((ret = getline(&line, &len, fd)) != -1)
     {
-        //Verif :
-        // len == 5
-        // isalpha only
         if (strlen(line) == 6)
         {
             if (line[5] != '\n')
             {
-                printf("lol\n");
                 free(line);
                 return (-1);
             }
@@ -84,7 +75,6 @@ int     parse_word_file(t_word *word_index)
         }
         if (ft_str_isalpha(line) == -1)
         {
-            printf("is alpha pbm\n");
             free(line);
             return -1;
         }
@@ -99,7 +89,6 @@ int     parse_word_file(t_word *word_index)
         free(line);
         return -1;
     }
-    printf("Word count = %d\n", word_count);
     /*
     //Fin de ficher lecture ok
     printf("A -- line = %s | len = %lu\n", line, strlen(line));
