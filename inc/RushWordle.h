@@ -6,16 +6,14 @@
 # include <string.h>
 # include <stdlib.h>
 # include <readline/readline.h>
-<<<<<<< HEAD
 # include "../libft/inc/libft.h"
-=======
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
 # include <string.h>
 # include <ctype.h>
 # include <errno.h>
->>>>>>> e9ae52009d7f2637e9ccd8d455ed72ab0c6f1843
+
 
 typedef struct s_word
 {
