@@ -2,19 +2,14 @@
 
 int game(t_grid grid/*, char ** dict, t_word index*/)
 {
-	char	input[6];
+	char	*input;
 	int		nb_try;
-	FILE	*fd;
 	
 	nb_try = 0;
-	fd = fopen(0, "r");
 	displayGrid(grid);
 	while (nb_try < 5)
 	{
-		write(1, "0\n", 2);
-		fgets(input, sizeof(input) - 1, fd);
-		write(1, "0\n", 2);
-		// input = readline("input: ");
+		input = get_next_line(0);
 		if (check_input(input/*, dict, index*/))
 			;
 		else
@@ -25,11 +20,11 @@ int game(t_grid grid/*, char ** dict, t_word index*/)
 			if (!strcmp(input, grid.word))
 			{
 				printf("Congratulations you found the word %s in %d guesses !\n", grid.word, nb_try);
-				// free(input);
+				free(input);
 				break;
 			}
 		}
-		// free(input);
+		free(input);
 	}
 	clean(grid/*, index*/);
 	return (0);

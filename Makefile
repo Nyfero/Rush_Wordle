@@ -22,11 +22,15 @@ INC_PATH = inc
 
 INC = $(addprefix $(INC_PATH)/, RushWordle.h)
 
+LIBFT_DIR = libft
+
+LIBFT = $(LIBFT_DIR)/libft.a
+
 #    Folders
 SRCS_PATH = srcs
 
 #    Files
-FILES = main.c game.c display.c init.c gnl.c
+FILES = main.c game.c display.c init.c
 
 #    Compilation
 NAME = wordle
@@ -46,10 +50,14 @@ OBJS = $(patsubst $(SRCS_PATH)%.c,	$(OBJS_PATH)%.o,	$(SRCS))
 #    Rules
 all: $(NAME)
 
-$(NAME): $(OBJS_PATH) $(OBJS) $(INC)
+$(NAME): $(LIBFT) $(OBJS_PATH) $(OBJS) $(INC)
 	@ echo "$(BLUE)\n         ***Make $(NAME) ***\n$(END)"
-	$(HIDE) $(CC) $(CFLAGS) $(OBJS) -lreadline -o $(NAME)
+	$(HIDE) $(CC) $(CFLAGS) $(OBJS) -lreadline -o $(NAME) $(LIBFT)
 	@ echo "$(GREEN)\n        ---$(NAME) created ---\n$(END)"
+	
+$(LIBFT): libft/Makefile
+	@ echo "$(BLUE)\n        ***Make Libft ***\n$(END)"
+	$(HIDE) make -C $(LIBFT_DIR)
 
 $(OBJS_PATH):
 	$(HIDE) mkdir -p $(OBJS_PATH)
@@ -60,10 +68,12 @@ $(OBJS_PATH)%.o: $(SRCS_PATH)%.c $(INC) Makefile
 
 clean:
 	$(HIDE) $(RM) $(OBJS_PATH)
+	$(HIDE) make clean -C $(LIBFT_DIR)
 	@ echo "$(PURPLE)\n        *** Clean objects ***\n$(END)"
 
 fclean: clean
 	$(HIDE) $(RM) $(NAME)
+	$(HIDE) make fclean -C $(LIBFT_DIR)
 	@ echo "$(RED)\n        *** Remove $(NAME) ***\n$(END)"
 
 re: fclean all

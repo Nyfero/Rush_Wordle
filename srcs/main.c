@@ -5,7 +5,7 @@ int	main(void)
 	t_grid	grid;
 
 	displayGameStart();
-	grid = initGridGame("aahed");
+	grid = initGridGame("times");
 	game(grid);
 	return (0);
 }
