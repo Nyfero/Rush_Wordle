@@ -6,6 +6,7 @@
 # include <string.h>
 # include <stdlib.h>
 # include <readline/readline.h>
+# include "../libft/inc/libft.h"
 
 typedef struct s_word
 {
@@ -34,6 +35,4 @@ void	displayGameStart(void);
 void	displayGrid(t_grid grid);
 int		letterInWord(char c, char **tmp);
 
-//	gnl.c
-char	*get_next_line(int fd);
 #endif
