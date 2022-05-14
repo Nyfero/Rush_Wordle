@@ -1,7 +1,7 @@
 #ifndef RUSHWORDLE_H
 # define RUSHWORDLE_H
 
-# define FILE_PATH "test.txt"
+# define FILE_PATH "words.txt"
 
 # include <stdio.h>
 # include <unistd.h>
