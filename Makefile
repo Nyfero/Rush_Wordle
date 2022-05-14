@@ -26,7 +26,7 @@ INC = $(addprefix $(INC_PATH)/, RushWordle.h)
 SRCS_PATH = srcs
 
 #    Files
-FILES = main.c game.c display.c init.c
+FILES = main.c game.c display.c init.c gnl.c
 
 #    Compilation
 NAME = wordle

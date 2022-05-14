@@ -27,8 +27,13 @@ t_grid	initGridGame(char *guess);
 int		game(t_grid disp/*, char ** dict, t_word index*/);
 int		check_input(char *input/*, char **dict, t_word index*/);
 void	putInGrid(char *input, t_grid grid);
+void	clean(t_grid grid/*, t_word index*/);
 
 //	display.c
 void	displayGameStart(void);
 void	displayGrid(t_grid grid);
+int		letterInWord(char c, char **tmp);
+
+//	gnl.c
+char	*get_next_line(int fd);
 #endif

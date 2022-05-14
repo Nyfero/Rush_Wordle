@@ -17,16 +17,47 @@ void displayGameStart(void)
 
 void	displayGrid(t_grid grid)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
+	char	*tmp;
 	
 	i = -1;
 	while (grid.tab[++i])
 	{
+		tmp = strdup(grid.word);
 		j = -1;
 		while (grid.tab[i][++j])
-			printf(" %c ", grid.tab[i][j]);
+		{
+			if (grid.tab[i][0] == '_')
+				printf(" %c ", grid.tab[i][j]);
+			else if (grid.tab[i][j] == tmp[j])
+				printf(" \e[92m%c\e[39m ", grid.tab[i][j]);
+			else
+			{
+				if (letterInWord(grid.tab[i][j], &tmp))
+					printf(" \e[93m%c\e[39m ", grid.tab[i][j]);
+				else
+					printf(" \e[90m%c\e[39m ", grid.tab[i][j]);
+			}
+		}
 		printf("\n");
+		free(tmp);
 	}
 	printf("\n");
+}
+
+int	letterInWord(char c, char **tmp)
+{
+	int	i;
+	
+	i = -1;
+	while ((*tmp)[++i])
+	{
+		if (c == (*tmp)[i])
+		{
+			(*tmp)[i] = '@';
+			return (1);
+		}
+	}
+	return (0);
 }
