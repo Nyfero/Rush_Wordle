@@ -27,7 +27,6 @@ void	ft_incr_word_index(t_word *word_index, char first_letter)
 	word_index[letter_index].end += 1;
 }
 
-<<<<<<< HEAD
 void    ft_print_word_table(char **word_table)
 {
     int i = 0;
@@ -36,7 +35,8 @@ void    ft_print_word_table(char **word_table)
         printf("[%d] -- %s\n", i, word_table[i]);
         i++;
     }
-=======
+}
+  
 int		check_line(char *line)
 {
 	if (strlen(line) == 6)
@@ -61,5 +61,4 @@ int		check_line(char *line)
 		return (1);
 	}
 	return (0);
->>>>>>> origin
 }
