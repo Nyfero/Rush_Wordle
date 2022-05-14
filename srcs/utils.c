@@ -10,7 +10,7 @@ int		ft_str_isalpha(char *str)
 	return 0;
 }
 
-void	clean(t_grid grid/*, t_word index*/)
+void	clean(t_grid grid)
 {
 	int i;
 

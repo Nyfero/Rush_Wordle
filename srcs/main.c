@@ -9,7 +9,10 @@ int	main(void)
 	char	*guess;
 
 	if ((word_count = parse_word_file(word_index)) == -1)
+	{
+		printf("File parsing error\n");
 		return (1);
+	}
 	ft_update_word_index(word_index);
 	word_table = init_table(word_count);
 	if (ft_fill_word_table(word_table, word_index) == -1)
@@ -24,7 +27,7 @@ int	main(void)
 		ft_free_ls(word_table);
 		return (1);
 	}
-	ft_print_word_table(word_table);
+	// ft_print_word_table(word_table);
 	displayGameStart();
 	grid = initGridGame(guess);
 	game(grid, word_table, word_index);
