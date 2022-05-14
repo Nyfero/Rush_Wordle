@@ -30,7 +30,7 @@ LIBFT = $(LIBFT_DIR)/libft.a
 SRCS_PATH = srcs
 
 #    Files
-FILES = main.c game.c display.c init.c
+FILES = main.c game.c display.c init.c utils.c
 
 #    Compilation
 NAME = wordle

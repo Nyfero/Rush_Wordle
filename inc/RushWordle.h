@@ -31,6 +31,10 @@ typedef struct s_grid
 
 //	init.c
 t_grid	initGridGame(char *guess);
+void	init_word_index(t_word *word_index);
+
+//	utils.c
+int		ft_str_isalpha(char *str);
 
 //	game.c
 int		game(t_grid disp/*, char ** dict, t_word index*/);
