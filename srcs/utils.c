@@ -26,3 +26,13 @@ void    ft_incr_word_index(t_word *word_index, char first_letter)
 	int letter_index = first_letter - 97;
 	word_index[letter_index].end += 1;
 }
+
+void    ft_print_word_table(char **word_table)
+{
+    int i = 0;
+    while (word_table[i])
+    {
+        printf("[%d] -- %s\n", i, word_table[i]);
+        i++;
+    }
+}

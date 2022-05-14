@@ -56,6 +56,31 @@ void    ft_update_word_index(t_word *word_index)
 
 }
 
+int     ft_fill_word_table(char **word_table, t_word *word_index)
+{
+    FILE *fd;
+    size_t len = 0;
+    char *line = NULL;
+    int ret;
+    if ((fd = fopen("words.txt", "r")) == NULL)
+        return (-1);
+    while ((ret = getline(&line, &len, fd)) != -1)
+    {
+        int letter_index = line[0] - 97;
+        int table_index = word_index[letter_index].start + word_index[letter_index].current;
+        word_index[letter_index].current += 1;
+        for  (int j = 0; j < 5; j++)
+            word_table[table_index][j] = line[j];
+        word_table[table_index][5] = '\0';
+    }
+    if ((ret == -1 && errno != 0) || fclose(fd) != 0)
+    {
+        free(line);
+        return (-1);
+    }
+    return 0;
+}
+
 char	**init_table(int word_count)
 {
 	char	**word_table;
